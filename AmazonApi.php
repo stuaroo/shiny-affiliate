@@ -8,8 +8,8 @@
  */
 class AmazonApi
 {
-	protected $_publicKey = 'AKIAJMB6F4WQQWW7234A';
-	protected $_privateKey = '3JE0ssQ1ix0xMESutXfc02DmkjdW1XD76oRbzllb';
+	protected $_publicKey = 'xxxxxxxxxxxx';
+	protected $_privateKey = 'xxxxxxxxxxxxxx';
 	protected $_associateTag = 'fountless-20';
 	
 	/**
