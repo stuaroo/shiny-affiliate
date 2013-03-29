@@ -253,7 +253,5 @@ if ( isset($opUrl) )
     <?php endif; ?> 
     </script>
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://www.assoc-amazon.com/s/impression-counter?tag=fountless-20&o=1"></script>
-    <noscript><img src="http://www.assoc-amazon.com/s/noscript?tag=fountless-20" alt="" ></noscript>
   </body>
 </html>
