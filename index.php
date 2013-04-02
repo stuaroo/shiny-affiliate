@@ -6,49 +6,46 @@ $Amazon = new AmazonApi();
 $Curl = new Curl();
 
 // get a signed URL and receive response xml file with item info
-$items = array('0765350386','1430210117','0765350378','076533433X','1576759776','0061092177','B00BDD1UYI','B00B5ARKC0','B0060MYM3S','B000A59PMO');
+$items = array('0452284694','0072230665','1616960922','0441013597','1400079292','0743269519','B00BDD1UYI','B00B5ARKC0','B0060MYM3S');
 $queryUrl = $Amazon->itemLookupWithOffersImages($items);
 $request = $Curl->curlString($queryUrl);
 $response = simplexml_load_string($request);
 
 // variables for titles to display and use as alt text for images, and my informative text
-$titles = array('Mistborn: The Final Empire',
-                 'PHP Object-Oriented Solutions',
-                 'Elantris',
-                 'The Eye of the World',
-                 'Leadership and Self-Deception',
-                 'Small Gods',
+$titles = array( 'The Gunslinger: The Dark Tower Book 1',
+                 'Oracle DB 10g PL/SQL Programming',
+                 'The Emperor\'s Soul',
+                 'Dune',
+                 'The Traveler',
+                 'The 7 Habits of Highly Effective People',
                  'Adventure Time: Season 2',
                  'Fringe: Season 5',
-                 'Game of Thrones: Season 2',
-                 'Veronica Mars: Season 1');
-$info = array('This has been at the top of my \'To Read\' list since I started <em>The Wheel of Time</em> a year ago 
-                (and I would\'ve been a fool to start another series in the middle of that one and have any hope of 
-                keeping the characters separate).  I\'m quite liking it so far!',
-              'Currently taking a course on PHP and this is the textbook.  So far I\'ve liked the way the author has 
-                presented <abbr title="Object-Oriented Programming" class="initialism">OOP</abbr> concepts; I\'ll 
-                have to wait and see how the rest of the content and examples turn out before passing judgement.',
-              'The first Brandon Sanderson book I read came highly recommended by a good friend, and now I highly 
-                recommend it to others.  I love that this  world is developed in one book with great characters and 
-                an intriguing magic system.',
-              'Book 1 of <em>The Wheel of Time</em> is a great read, and was just the beginning of my recent 
-                year-long experience of the entire series.  Loved this book and loved the series, so I can\'t help 
-                but recommend it to all.  I am, however, puzzled by this cover, as it appears Rand is on a boat mast 
-                but I can\'t remember him on a boat during this book',
-              'Not only a great business book but a great book about life in general.  The main points are rather 
-                simple and seemingly obvious, but they have far-reaching implications if you "live" the material, 
-                as the authors note.',
-              'Great book by one of my favorite authors, Terry Pratchett.  Particularly good if you are able to see
-                the lighter side of organized religion.  You may want to consider a different title if this is your
-                first Discworld book however (I would recommend Guards! Guards!)',
-              'Well, I\'m not watching it yet so to speak as it has yet to be released.  Great show, great characters
-                Can\'t recommend it enough!',
+                 'Game of Thrones: Season 2');
+$info = array('Just finished, actually.  My book club decided to start reading Stephen King\'s The Dark Tower series.  
+                I have mixed feelings of the book/series so far, as the pacing is kind of odd in this first book (i.e.
+                a decent amount of action, followed by not much action as all).  I\'ll see how Book 2 goes.',
+              'This one is for class, and is not the most exciting read in the world.  It is kind of interesting to 
+                see things from a procedural programming point of view while coding PL/SQL (which forces you to think 
+                about things a little differently than you would with a typically object-oriented mindset).',
+              'Got my copy at a release event and signed by the author, Brandon Sanderson.  Haven\'t got a chance to 
+                crack it open and get absorbed in this short novel as of yet, but I think the time is now and I\'ll start 
+                \'er up this weekend',
+              'Great sci-fi title that sucked me in when I first read it in my youth.  I need to give it a re-read
+                sometime soon, to see how much I can and cannot remember.  The sequels are kind of meh, but this first
+                book is definitely worth reading.',
+              'I read this novel based on recommendations from several of my co-workers, and it was a good read.  I 
+                liked the paranoid feel of the book, and some of the odd facts about the author (e.g. that he has never
+                 met his editor and that they communicate through the Internet and via an untraceable satellite phone).',
+              'This book gets a bad wrap (which is part of the reason why it took me so long to read it), but it shouldn\'t.  
+                Covey has come up with some interesting principles that at least deserver a cursory read-through.  My 
+                personal favorite: seek first to understand, then to be understood.',
+              'Well, I\'m not watching it quite yet as it has not been released, but I do watch the show all the time on 
+                Cartoon Network, so in that respect I could very well have seen the entirety of this season.  Great show, 
+                great characters; guaranteed one of the weirdest shows you will ever see (and I can\'t recommend it enough!)',
               'Wish I would have watched season 5 while it aired, but now I\'ll just have to wait a few months for the 
                 DVD\'s to release so I can sit back and watch how the show ends',
-              'Just finished the season 2 re-watch with a friend of mine, and I\'m rather excited for season 3 to start
-                in a week!',
-              'A friend just forced this series on me, but it has been recommended to me by several individuals.  Perhaps
-                soon I can do some recommending as well');
+              'Just finished a season 2 re-watch with a friend of mine, and I\'m rather excited for season 3 to start
+                this week!');
 // variable to hold signed URL from one of the operations below, variable for purchase link, and setting cart count
 $opUrl = '';
 $purchaseUrl = '';
@@ -142,14 +139,14 @@ if ( isset($opUrl) )
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Amazon Product Advertising API Testing with PHP - Take 7</title>
+    <title>OnePageStore &middot; Stuart Baker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Shop for a few items that I find awesome, and let Amazon.com send them to you.">
+    <meta name="author" content="Stuart Baker">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="css/fountless.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="../css/fountless.css" rel="stylesheet">
 
   	<link href="http://fonts.googleapis.com/css?family=Lobster|Cabin" rel="stylesheet" type="text/css">
 
@@ -183,6 +180,7 @@ if ( isset($opUrl) )
                   <li><a href="../index.html#circ">Circulator</a></li>  
                   <li><a href="../index.html#elimi">Elimi-wait</a></li>  
                   <li><a href="../index.html#cube">Cube Training</a></li> 
+                  <li><a href="../index.html#onepage">OnePageStore</a></li>
                 </ul>
               </li>
             <?php   // show cart checkout link if a purchase URL is available
@@ -216,7 +214,7 @@ if ( isset($opUrl) )
       <?php endif; ?> 
           <li class="span4">
             <div class="thumbnail">
-              <img src="<?php echo $item->LargeImage->URL; ?>" width="200" alt="<?php echo $titles[$i] . ' cover'; ?>"><br>
+              <img src="<?php echo $item->LargeImage->URL; ?>" width="200" alt="<?php echo $titles[$i] . ' cover'; ?>">
               <div class="caption">
                 <h5><?php echo $titles[$i]; ?></h5>
                 <p><?php echo $info[$i]; $i++; ?></p>
@@ -224,7 +222,7 @@ if ( isset($opUrl) )
                 <button type="submit" name="asin" value="<?php echo $currAsin = 'a' . (string)$item->ASIN;; ?>" 
                 <?php // set button value to ASIN#, and change button text based on existence of session variable
                 echo (isset($_SESSION[$currAsin]) ? 'class="btn btn-danger"><i class="icon-minus icon-white"></i> from ' : 
-                  'class="btn btn-success"><i class="icon-plus icon-white"></i> to '); ?>Amazon Cart</button><br><br>
+                  'class="btn btn-success"><i class="icon-plus icon-white"></i> to '); ?>Amazon Cart</button>
               </div>
             </div>
           </li>
@@ -236,7 +234,8 @@ if ( isset($opUrl) )
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2012-2013 Stuart Baker &middot; Icons courtesy of <a href="http://glyphicons.com/">Glyphicons</a></p>
       </footer>
-
+      <div><?php print_r($_SESSION); ?></div>
+      <div><?php print_r($_POST); ?></div>
     </div><!-- /.container -->
 
     <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
@@ -252,6 +251,6 @@ if ( isset($opUrl) )
       });
     <?php endif; ?> 
     </script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
   </body>
 </html>
