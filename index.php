@@ -181,7 +181,7 @@ if ( isset($opUrl) )
     </div>
     <div class="ama-checkout"><i class="icon-arrow-up"></i> Click this link when you're ready to checkout!</div>
 
-    <!-- Sidebar & Thumbnails
+    <!-- Thumbnails
     ================================================== -->
     <div class="container store">
       <form method="post">
