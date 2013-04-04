@@ -50,21 +50,8 @@ $info = array('Just finished, actually.  My book club decided to start reading S
 $opUrl = '';
 $purchaseUrl = '';
 $cartCount = isset($_SESSION['CartCount']) ? (int)$_SESSION['CartCount'] : 0;
-// check if this is a browser refresh; if it is and session CartId is set, get the cart (cartGet())
-if ( isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0' )
-{
-	if ( isset($_SESSION['CartId']) )
-	{
-		$opUrl = $Amazon->cartGet($_SESSION['HMAC'], $_SESSION['CartId']);
-	}
-	// if this is a refresh with no session CartId, no buttons have been clicked so unset opUrl and purchaseUrl
-	else
-	{
-		unset($opUrl, $purchaseUrl);
-	}
-}
 // if POST['ASIN'] exists: either need to create a cart, add to an existing cart, or delete from a cart
-elseif ( isset($_POST['asin']) )
+if ( isset($_POST['asin']) )
 {
 	// For add, create and delete
 	$searchTerm = substr($_POST['asin'], 1);
@@ -101,7 +88,7 @@ elseif ( isset($_POST['asin']) )
 		$cartCount++;
 	}
 }
-// if this is not a refresh or a POST, then it's first load; load default purchase buttons and unset opUrl and purchaseUrl
+// if this is not a POST, then it's first load; load default purchase buttons and unset opUrl and purchaseUrl
 else 
 {
 	unset($opUrl, $purchaseUrl);
@@ -234,8 +221,6 @@ if ( isset($opUrl) )
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2012-2013 Stuart Baker &middot; Icons courtesy of <a href="http://glyphicons.com/">Glyphicons</a></p>
       </footer>
-      <div><?php print_r($_SESSION); ?></div>
-      <div><?php print_r($_POST); ?></div>
     </div><!-- /.container -->
 
     <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
