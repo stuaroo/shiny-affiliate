@@ -22,4 +22,5 @@ Also note: **Digital items, like Kindle eBooks and mp3's, cannot be added to a r
 ## Additional Resources
 
 [Product Advertising API Scratchpad](http://associates-amazon.s3.amazonaws.com/scratchpad/index.html) - great for testing which elements are returned by each RG
+
 [Product Advertising API Quick Reference Card](http://s3.amazonaws.com/awsdocs/Associates/2011-08-01/prod-adv-api-qrc-2011-08-01.pdf) - lists required/optional parameters as well as relevant RG for each operation
