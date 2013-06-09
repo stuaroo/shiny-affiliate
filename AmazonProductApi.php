@@ -1,16 +1,17 @@
 <?php
 /**
- * Use Amazon API to display products and product info 
+ * Use Amazon Product API to display products and product info from Amazon.com
  *
- * Found at webtutsdepot.com/2009/10/13/amazon-signed-request-php/ with some
- * alterations to variable/class names.  3-19-13 SB adding more methods
- * 
+ * Uses Amazon's Product Advertising API to display products and product info
+ * from Amazon using RESTful web requests; can also be used to build remote 
+ * shopping carts to allow users to checkout directly from Amazon.com
+ * @version 1.2.0
  */
-class AmazonApi
+class AmazonProductApi
 {
-	protected $_publicKey = 'xxxxxxxxxxxx';
-	protected $_privateKey = 'xxxxxxxxxxxxxx';
-	protected $_associateTag = 'fountless-20';
+	protected $_publicKey = 'xxxxxxxxxxxxxxxxxxxxxx';
+	protected $_privateKey = 'xxxxxxxxxxxxxxxxxxxxxx';
+	protected $_associateTag = 'xxxxxxxxxxxxxxxxxxxxxx';
 	
 	/**
 	 * Get a signed URL
@@ -31,6 +32,7 @@ class AmazonApi
 		$param['Version'] = '2011-08-01';
 		ksort($param);
 		
+		// URL encode key/value pairs
 		foreach($param as $key => $value)
 		{
 			$key = str_replace("%7E", "~", rawurlencode($key));
@@ -38,7 +40,7 @@ class AmazonApi
 			$queryParamsUrl[] = $key . '=' . $value;
 		}
 		
-		// append all "params=value"s with ampersands
+		// add ampersands between key/value pairs
 		$signature['queryUrl'] = implode("&", $queryParamsUrl);
 		
 		// start signature creation
@@ -60,16 +62,18 @@ class AmazonApi
 	 }
 	 
 	 /**
-	  * Get a signed url for ItemLookup Operation with Offers Response Group
+	  * Get a signed url for ItemLookup Operation 
 	  * 
 	  * @param array $items a list of ASINs to lookup
+	  * @param string $responseGroup a comma-separated string with desired response groups, defaults to Offers,Images
 	  * @return string $signedUrl a query url with signature
 	  */
-	 public function itemLookupWithOffersImages($items)
+	 public function itemLookup($items, $responseGroup = 'Offers,Images')
 	 {
 	 	$parameters = array(
-		"ResponseGroup"=>"Offers,Images",
+		"ResponseGroup"=>$responseGroup,
 		"Operation"=>"ItemLookup",
+		"MerchantId"=>"Amazon",
 		"IdType"=>"ASIN"
 		);
 	 	if ( is_array($items) )
