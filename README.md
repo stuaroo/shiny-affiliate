@@ -1,4 +1,4 @@
-# OnePageStore
+# Shiny Affiliate
 
 - Uses PHP class called AmazonProductApi to set proper parameters and create signed URL's for use with Amazon's Product Advertising API
 - Also makes use of a very basic cURL class to retrieve response XML file
